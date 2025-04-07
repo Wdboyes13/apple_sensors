@@ -2,7 +2,7 @@
 import curses
 import sys, os
 import time
-
+import subprocess
 import platform
 # import os, platform, subprocess
 def get_processor_name():
