@@ -6,11 +6,10 @@ import time
 import platform
 # import os, platform, subprocess
 def get_processor_name():
-    return "Apple M1"
     if platform.system() == "Darwin":
         # os.environ['PATH'] = os.environ['PATH'] + os.pathsep + '/usr/sbin'
-        command ="/usr/sbin/sysctl -n machdep.cpu.brand_string"
-        return subprocess.check_output(command).strip()
+        command = ["/usr/sbin/sysctl", "-n", "machdep.cpu.brand_string"]
+        return subprocess.check_output(command).strip().decode("utf-8")
     return ""
 
 def get_OS_ver():
