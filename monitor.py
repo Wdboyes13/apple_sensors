@@ -8,6 +8,9 @@ import platform
 def get_processor_name():
     if platform.system() == "Darwin":
         # os.environ['PATH'] = os.environ['PATH'] + os.pathsep + '/usr/sbin'
+        # Made it so CPU name was gotten dynamically
+        # Subprocess uses command args as arrays not just one string
+        # Also needed to add .decode("utf-8") because the command returns bytes not a string
         command = ["/usr/sbin/sysctl", "-n", "machdep.cpu.brand_string"]
         return subprocess.check_output(command).strip().decode("utf-8")
     return ""
